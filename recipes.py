@@ -54,7 +54,7 @@ class Recipe:
         
         new_ingredients = []
         for ing in self.ingredients:
-            new_ingredients.append(Ingredient(ing.name, ing.quanantity * ratio, int.unit))
+            new_ingredients.append(Ingredient(ing.name, ing.quantity * ratio, int.unit))
 
         return Recipe(self.title, new_ingredients)
     
