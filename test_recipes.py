@@ -7,3 +7,8 @@ def test_ingredient_creation():
     assert ing.name == "Мука"
     assert ing.quantity == 500.0
     assert ing.unit == "г"
+
+def test_ingredient_str():
+    ing = Ingredient("Мука", 500.0, "г")
+    assert str(ing) == "Мука: 500.0 г"
+
