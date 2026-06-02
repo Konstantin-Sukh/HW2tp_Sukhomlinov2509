@@ -1,5 +1,5 @@
 import pytest
-from recipes import Ingredient, Recipe, ShoppingList, DietaryRecipe
+from recipes import Ingredient, Recipe, ShoppingList
 
 # ---- тесты класса Ingredient ----
 def test_ingredient_creation():
