@@ -37,12 +37,12 @@ for ing in shopping.get_list():
 ## Установка и запуск тестов
 
 Чтобы развернуть проект на своем устройстве, выполните команды:
-
+```bash
 git clone https://github.com/Konstantin-Sukh/HW2tp_Sukhomlinov2509.git
 cd /Users/konstantin_sukh/Downloads/HW2_Konst_Sukh2509
 pip install -r requirements.txt
 pytest (у меня сначала надо было прописать: pip3 install pytest)
-
+```
 Примечания:
 - Требуется Python версии 3.8 или выше.
 - После установки зависимостей команда pytest автоматически найдёт и выполнит все тесты из файла test_recipes.py.
