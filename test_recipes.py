@@ -76,3 +76,52 @@ def test_recipe_len():
 
 
 # ---- тесты класса ShoppingList ----
+def test_shopping_list_add_recipe():
+    r = Recipe("Омлет")
+    r.add_ingredient(Ingredient("Яйцо", 3, "шт"))
+    r.add_ingredient(Ingredient("Молоко", 100, "мл"))
+    sl = ShoppingList()
+    sl.add_recipe(r, 2)
+    assert len(sl._items) == 2
+    with pytest.raises(ValueError, match="Количество порций должно быть положительным"):
+        sl.add_recipe(r, -1)
+
+def test_shopping_list_remove_recipe():
+    r1 = Recipe("Суп")
+    r1.add_ingredient(Ingredient("Свекла", 2, "шт"))
+    r2 = Recipe("Другой суп")
+    r2.add_ingredient(Ingredient("Огурец", 3, "шт"))
+    sl = ShoppingList()
+    sl.add_recipe(r1, 1)
+    sl.add_recipe(r2, 1)
+    sl.remove_recipe("Суп")
+    assert all(item[1] != "Суп" for item in sl._items)
+    sl.remove_recipe("Нет в списке")
+
+def test_shopping_list_get_list():
+    r1 = Recipe("Каша")
+    r1.add_ingredient(Ingredient("Молоко", 200, "мл"))
+    r1.add_ingredient(Ingredient("Овсянка", 100, "г"))
+    r2 = Recipe("Молочный напиток")
+    r2.add_ingredient(Ingredient("Молоко", 500, "л"))
+    sl = ShoppingList()
+    sl.add_recipe(r1, 1)
+    sl.add_recipe(r2, 1)
+    final = sl.get_list()
+    assert len(final) == 2
+    milk_drink = [ing for ing in final if ing.name == "Молоко"][0]
+    assert milk_drink.quantity == 700
+    assert final[0].name <= final[1].name
+
+def test_shopping_list_add():
+    sl1 = ShoppingList()
+    sl2 = ShoppingList()
+    r = Recipe("Печенье")
+    r.add_ingredient(Ingredient("Мука", 150, "г"))
+    sl1.add_recipe(r, 1)
+    sl2.add_recipe(r, 1)
+    sl3 = sl1 + sl2
+    assert sl3 is not sl1 and sl3 is not sl2
+    assert len(sl3._items) == 2
+    assert len(sl1._items) == 1
+    assert len(sl2._items) == 1
