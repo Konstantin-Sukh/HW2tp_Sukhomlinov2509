@@ -103,7 +103,7 @@ def test_shopping_list_get_list():
     r1.add_ingredient(Ingredient("Молоко", 200, "мл"))
     r1.add_ingredient(Ingredient("Овсянка", 100, "г"))
     r2 = Recipe("Молочный напиток")
-    r2.add_ingredient(Ingredient("Молоко", 500, "л"))
+    r2.add_ingredient(Ingredient("Молоко", 500, "мл"))
     sl = ShoppingList()
     sl.add_recipe(r1, 1)
     sl.add_recipe(r2, 1)
