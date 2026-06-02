@@ -6,6 +6,7 @@
 
 Пример кода для работы с библиотекой:
 
+```python
 from recipes import Ingredient, Recipe, ShoppingList, DietaryRecipe
 
 # Создаём ингредиенты
@@ -32,7 +33,7 @@ shopping.add_recipe(double_recipe, 1)
 # Итоговый список
 for ing in shopping.get_list():
     print(ing)
-
+```
 ## Установка и запуск тестов
 
 Чтобы развернуть проект на своем устройстве, выполните команды:
